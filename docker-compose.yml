@@ -10,13 +10,15 @@ services:
       - 9000:80
 
   Mysql_db:
-    image: mariadb:latest
+    image: mariadb
     restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
     volumes: 
         - ./init:/docker-entrypoint-initdb.d
   
   phpmyadmin:
-    image: phpmyadmin:latest
+    image: phpmyadmin
     restart: always
     ports:
       - 9001:80
