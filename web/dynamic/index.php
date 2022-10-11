@@ -13,11 +13,16 @@ foreach ($result as $row){
 }
 ?>
 </table>
+<p id="status"></p>
 <script>
-      if (get('e')) {
+    function get(name) {
+      if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+    }
+    if (get('e')) {
         alert("Неверный логин или пароль");
-      };
-    </script>
+    };
+</script>
 <form action="processing/login.php" method="POST">
 <p>Введите логин: <input type="text" name="login"></p>
 <p>Введите пароль: <input type="password" name="pass"></p>

@@ -7,8 +7,8 @@ require_once '../settings.php';
 //var_dump($_POST['pass']);
 if (isset($_POST['done'])) {
 
-    $name = $_POST['login'];
-    $password = md5($_POST['pass']);
+    $name = htmlspecialchars($_POST['login']);
+    $password = md5(htmlspecialchars($_POST['pass']));
     $mysqli = openmysqli();
     // Подготовка и отправка запроса
     $statement = $mysqli->prepare(
@@ -21,7 +21,7 @@ if (isset($_POST['done'])) {
     $mysqli->close();
 
     if ($result) {
-        setcookie('auth', strval(rand(0, 9)));
+        setcookie('auth', strval(rand(0, 9)), time()+60*60*24, "/");
         header('Location: ' . '../adm.php');
     } else {
         header('Location: ' . '../index.php?e=1');
