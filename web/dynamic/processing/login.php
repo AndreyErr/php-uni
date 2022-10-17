@@ -3,8 +3,6 @@
 require_once '../settings.php';
 
 // Если кнопка нажата, то выполняет тело условия
-//var_dump($_POST['login']);
-//var_dump($_POST['pass']);
 if (isset($_POST['done'])) {
 
     $name = htmlspecialchars($_POST['login']);
@@ -21,7 +19,7 @@ if (isset($_POST['done'])) {
     $mysqli->close();
 
     if ($result) {
-        setcookie('auth', strval(rand(0, 9)), time()+60*60*24, "/");
+        setcookie('auth', strval(rand(0, 9)), time()+60*60, "/");
         header('Location: ' . '../adm.php');
     } else {
         header('Location: ' . '../index.php?e=1');
