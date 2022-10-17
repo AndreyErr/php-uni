@@ -19,8 +19,11 @@ foreach ($result as $row){
       if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
         return decodeURIComponent(name[1]);
     }
-    if (get('e')) {
+    if (get('err')) {
         alert("Неверный логин или пароль");
+    };
+    if (get('ext')) {
+        alert("Выход из админ панели");
     };
 </script>
 <form action="processing/login.php" method="POST">

@@ -2,7 +2,7 @@
 
 require_once '../settings.php';
 
-// Если кнопка нажата, то выполняет тело условия
+// Если кнопка нажата, то выполняет вход
 if (isset($_POST['done'])) {
 
     $name = htmlspecialchars($_POST['login']);
@@ -19,9 +19,15 @@ if (isset($_POST['done'])) {
     $mysqli->close();
 
     if ($result) {
-        setcookie('auth', strval(rand(0, 9)), time()+60*60, "/");
+        setcookie('auth', "0", time()+60*60, "/");
         header('Location: ' . '../adm.php');
     } else {
-        header('Location: ' . '../index.php?e=1');
+        header('Location: ' . '../index.php?err=1');
     }
-    }
+}
+
+// Если кнопка нажата, то выполняет выход
+if (isset($_POST['exit'])) {
+    setcookie('auth', "0", time(), "/");
+    header('Location: ' . '../index.php?ext=1');
+}

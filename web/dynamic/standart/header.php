@@ -7,7 +7,7 @@
 <body>
 <header class="site-header">
     <div class="site-identity">
-      <h1><a href="#">Пр 3</a></h1>
+      <h1><a href="/">Пр 3</a></h1>
     </div>  
     <nav class="site-navigation">
       <ul class="nav">

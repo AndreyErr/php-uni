@@ -14,6 +14,10 @@ foreach ($result as $row){
 ?>
 </table>
 
+<form action="processing/login.php" method="POST">
+<p><input type="submit" value="Выход" name="exit"></p>
+</form>
+
 <?php
     require_once "standart/footer.php";
 ?>
