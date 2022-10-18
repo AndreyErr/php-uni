@@ -7,7 +7,6 @@ services:
     restart: always
     volumes: 
       - ./web/dynamic:/var/www/app
-      - ./server-config/apache/.htaccess:/var/www/app/.htaccess
       - ./server-config/apache/ports.conf:/etc/apache2/ports.conf
       - ./server-config/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
 

@@ -14,6 +14,7 @@
         <li><a href="/">Главная</a></li> 
         <li><a href="/catalog.php">Каталог</a></li> 
         <li><a href="/adm.php">Адм</a></li> 
+        <li><a href="/limit/adm2.php">Адм2</a></li> 
         <li><a href="/about.html">О нас</a></li> 
       </ul>
     </nav>

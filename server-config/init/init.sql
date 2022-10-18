@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: Mysql_db
--- Время создания: Окт 11 2022 г., 08:27
+-- Время создания: Окт 18 2022 г., 11:59
 -- Версия сервера: 10.9.3-MariaDB-1:10.9.3+maria~ubu2204
 -- Версия PHP: 8.0.24
 
@@ -55,8 +55,8 @@ INSERT INTO `product` (`id`, `name`, `type`, `cost`, `img`) VALUES
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `pass` varchar(60) NOT NULL
+  `name` char(50) NOT NULL,
+  `pass` char(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -64,9 +64,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `pass`) VALUES
-(1, '1', 'c4ca4238a0b923820dcc509a6f75849b'),
-(2, '2', 'c4ca4238a0b923820dcc509a6f75849b');
-
+(1, '1', '$apr1$l93r1m4t$JLD8MD9JjpVnUqJcHdkfq0'),
+(2, '2', 'c4ca4238a0b923820dcc509a6f75849b'),
+(3, '3', '1'),
+(4, 'adm', '$apr1$5edrcs2w$NdkSWdoNV8ETayzMUbgaj1'),
+(5, 'admin', '$apr1$l2s6q1re$3sYAzhIu9RV5duE/6GWxC/');
 -- --------------------------------------------------------
 
 --
@@ -125,7 +127,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

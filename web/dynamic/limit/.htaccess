@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "My Server"
+Require valid-user
+
+ErrorDocument 401 "<html><meta http-equiv=\"refresh\" content=\"0;url=/error.html\"></html>"
