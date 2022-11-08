@@ -1,13 +1,13 @@
 <html lang="ru">
 <head>
-  <title>Пр 3</title>
+  <title>Пр 4</title>
   <link rel="stylesheet" href="/src/css/style.css" type="text/css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 <header class="site-header">
     <div class="site-identity">
-      <h1><a href="/">Пр 3</a></h1>
+      <h1><a href="/">Пр 4</a></h1>
     </div>  
     <nav class="site-navigation">
       <ul class="nav">
