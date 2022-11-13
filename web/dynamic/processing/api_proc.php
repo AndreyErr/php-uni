@@ -1,5 +1,5 @@
 <?php
 function output($аnswer, $message)
 {
-    echo '{аnswer: '.$аnswer.', message: "'.$message.'"}';
+    echo '{"аnswer": '.$аnswer.', "message": "'.$message.'"}';
 }
