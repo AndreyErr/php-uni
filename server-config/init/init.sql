@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: Mysql_db
--- Время создания: Окт 18 2022 г., 11:59
--- Версия сервера: 10.9.3-MariaDB-1:10.9.3+maria~ubu2204
--- Версия PHP: 8.0.24
+-- Время создания: Ноя 28 2022 г., 18:55
+-- Версия сервера: 10.10.2-MariaDB-1:10.10.2+maria~ubu2204
+-- Версия PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,17 @@ SET time_zone = "+00:00";
 --
 -- База данных: `appDB`
 --
-CREATE DATABASE IF NOT EXISTS `appDB` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `appDB`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `photo`
+--
+
+CREATE TABLE `photo` (
+  `id` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -35,7 +44,7 @@ CREATE TABLE `product` (
   `type` varchar(50) NOT NULL,
   `cost` int(11) NOT NULL,
   `img` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `product`
@@ -56,19 +65,21 @@ INSERT INTO `product` (`id`, `name`, `type`, `cost`, `img`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` char(50) NOT NULL,
-  `pass` char(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `pass` char(60) NOT NULL,
+  `theme` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `pass`) VALUES
-(1, '1', '$apr1$l93r1m4t$JLD8MD9JjpVnUqJcHdkfq0'),
-(2, '2', 'c4ca4238a0b923820dcc509a6f75849b'),
-(3, '3', '1'),
-(4, 'adm', '$apr1$5edrcs2w$NdkSWdoNV8ETayzMUbgaj1'),
-(5, 'admin', '$apr1$l2s6q1re$3sYAzhIu9RV5duE/6GWxC/');
+INSERT INTO `user` (`id`, `name`, `pass`, `theme`) VALUES
+(1, '1', '$apr1$l93r1m4t$JLD8MD9JjpVnUqJcHdkfq0', 0),
+(2, 'adm', 'c4ca4238a0b923820dcc509a6f75849b', 1),
+(3, 'adm2', 'c4ca4238a0b923820dcc509a6f75849b', 0),
+(4, 'adm3', '$apr1$5edrcs2w$NdkSWdoNV8ETayzMUbgaj1', 0),
+(5, 'admin', '$apr1$l2s6q1re$3sYAzhIu9RV5duE/6GWxC/', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -79,7 +90,7 @@ CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `surname` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `users`
@@ -94,6 +105,12 @@ INSERT INTO `users` (`ID`, `name`, `surname`) VALUES
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `photo`
+--
+ALTER TABLE `photo`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `product`
@@ -116,6 +133,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `photo`
+--
+ALTER TABLE `photo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `product`

@@ -1,6 +1,6 @@
 <?php
-
-require_once '../settings.php';
+session_start();
+require '../settings.php';
 
 // Если кнопка нажата, то выполняет вход
 if (isset($_POST['done'])) {
@@ -9,17 +9,14 @@ if (isset($_POST['done'])) {
     $password = md5(htmlspecialchars($_POST['pass']));
     $mysqli = openmysqli();
     // Подготовка и отправка запроса
-    $statement = $mysqli->prepare(
-        'SELECT id FROM user WHERE name = ? AND pass = ?'
-    );
-    $statement->bind_param('ss', $name, $password);
-    $statement->execute();
+    $statement = $mysqli->query('SELECT * FROM user WHERE name = "'.$name.'" AND pass = "'.$password.'";');
     // Есть в списке пользователей
-    $result = $statement->get_result()->num_rows === 1;
     $mysqli->close();
-
-    if ($result) {
-        setcookie('auth', "0", time()+60*60, "/");
+    if ($statement != false && $statement->num_rows == 1) {
+        $result = mysqli_fetch_assoc($statement);
+        $_SESSION['id'] = $result['id'];
+        $_SESSION['theme'] = $result['theme'];
+        $_SESSION['name'] = $result['name'];
         header('Location: ' . '../adm.php');
     } else {
         header('Location: ' . '../index.php?err=1');
@@ -28,6 +25,6 @@ if (isset($_POST['done'])) {
 
 // Если кнопка нажата, то выполняет выход
 if (isset($_POST['exit'])) {
-    setcookie('auth', "0", time(), "/");
+    session_destroy();
     header('Location: ' . '../index.php?ext=1');
 }

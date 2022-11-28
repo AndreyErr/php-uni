@@ -1,7 +1,8 @@
 <?php
-    require_once "standart/header.php";
+    session_start();
+    require "standart/header.php";
 ?>
-
+<div>
 <h1>Таблица пользователей данного продукта</h1>
 <table>
     <tr><th>Id</th><th>Name</th><th>Surname</th></tr>
@@ -31,6 +32,7 @@ foreach ($result as $row){
 <p>Введите пароль: <input type="password" name="pass"></p>
 <p><input type="submit" value="Войти" name="done"></p>
 </form>
+</div>
 <?php
-    require_once "standart/footer.php";
+    require "standart/footer.php";
 ?>
