@@ -6,7 +6,7 @@ if(!array_key_exists('id', $_SESSION))
     require_once 'settings.php';
 ?>
 <h1>ADM1 | Пользователи</h1>
-<h1>Сессия логина: <?php echo $_SESSION['id']?></h1>
+<h1>Сессия id: <?php echo $_SESSION['id']?></h1>
 <table>
     <tr><th>ID</th><th>Логин</th><th>Пароль</th></tr>
 <?php

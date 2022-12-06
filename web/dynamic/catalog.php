@@ -9,7 +9,7 @@
 $mysqli = openmysqli();
 $result = $mysqli->query("SELECT * FROM product");
 foreach ($result as $row){
-    echo "<tr><td>{$row['name']}</td><td>{$row['type']}</td><td>{$row['cost']}</td><td><img src='/src/img/market/{$row['img']}.png' height='100px' alt='{$row['cost']}'></td></tr>";
+    echo "<tr><td>{".$row['name']."}</td><td>{".$row['type']."}</td><td>{".$row['cost']."}</td><td><img src='/src/img/market/{".$row['img']."}.png' height='100px' alt='{".$row['cost']."}'></td></tr>";
 }
 ?>
 </table>
