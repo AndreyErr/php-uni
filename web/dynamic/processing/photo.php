@@ -10,8 +10,8 @@ if($_FILES['file']){
             $fileSize = $_FILES['file']['size'];
             $fileType = $_FILES['file']['type'];
             $fileFormat = explode('/',$fileType)[1];
-            // $fileExt = explode('.',$fileName);
-            // $fileExt = strtolower(end($fileExt));
+            $fileExt = explode('.',$fileName);
+            $fileExt = strtolower(end($fileExt));
             $expensions = array("pdf");
             if(array_search($fileFormat, $expensions) === false) {
                 $error = 'Неправильный формат файла'; 
@@ -25,10 +25,18 @@ if($_FILES['file']){
                 $name = date("His");
                 $fileName = $name.'.pdf';
                 move_uploaded_file($fileTmp, $uploaddir.$fileName);
-                $mysqli = openmysqli();
-                $mysqli->query("INSERT INTO photo VALUES (NULL, '".$fileName."');");
-                $mysqli->close();
-                header('Location: ' .'/pdf/files.php');
+
+                exec('file ' . $uploaddir.$fileName, $fileExt);
+                $isPdf = strripos($fileExt[0], 'pdf document');
+                if ($isPdf != false){
+                    $mysqli = openmysqli();
+                    $mysqli->query("INSERT INTO photo VALUES (NULL, '".$fileName."');");
+                    $mysqli->close();
+                    header('Location: ' .'/pdf/files.php');
+                } else {
+                    exec('rm ' . $uploaddir . $fileName, $fileExt);
+                    echo 'Неправильный формат файла';
+                }
             }else{
                 echo $error;
             }
