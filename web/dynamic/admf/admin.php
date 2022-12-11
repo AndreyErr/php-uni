@@ -1,27 +1,18 @@
 <?php
-session_start();
 if(!array_key_exists('id', $_SESSION))
-    header('Location: ' . '../index.php?err=1');
-    require_once "standart/header.php";
-    require_once 'settings.php';
+    header('Location: ' . '../');
 ?>
 <h1>ADM1 | Пользователи</h1>
 <h1>Сессия id: <?php echo $_SESSION['id']?></h1>
 <table>
     <tr><th>ID</th><th>Логин</th><th>Пароль</th></tr>
 <?php
-$mysqli = openmysqli();
-$result = $mysqli->query("SELECT * FROM user ORDER BY id DESC");
-foreach ($result as $row){
+foreach ($data['users'] as $row){
     echo "<tr><td>{$row['id']}</td><td>{$row['name']}</td><td>{$row['pass']}</td></tr>";
 }
 ?>
 </table>
 
-<form action="processing/login.php" method="POST">
+<form action="a/unLogin" method="POST">
 <p><input type="submit" value="Выход" name="exit"></p>
 </form>
-
-<?php
-    require_once "standart/footer.php";
-?>

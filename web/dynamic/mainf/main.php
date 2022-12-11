@@ -1,15 +1,9 @@
-<?php
-    session_start();
-    require "standart/header.php";
-?>
 <div>
 <h1>Таблица пользователей данного продукта</h1>
 <table>
     <tr><th>Id</th><th>Name</th><th>Surname</th></tr>
 <?php
-$mysqli = new mysqli("Mysql_db", "root", "root", "appDB");
-$result = $mysqli->query("SELECT * FROM users");
-foreach ($result as $row){
+foreach ($data['usersOne'] as $row){
     echo "<tr><td>{$row['ID']}</td><td>{$row['name']}</td><td>{$row['surname']}</td></tr>";
 }
 ?>
@@ -27,12 +21,9 @@ foreach ($result as $row){
         alert("Выход из админ панели");
     };
 </script>
-<form action="processing/login.php" method="POST">
+<form action="a/login" method="POST">
 <p>Введите логин: <input type="text" name="login"></p>
 <p>Введите пароль: <input type="password" name="pass"></p>
 <p><input type="submit" value="Войти" name="done"></p>
 </form>
 </div>
-<?php
-    require "standart/footer.php";
-?>

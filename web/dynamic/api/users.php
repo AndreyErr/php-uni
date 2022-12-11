@@ -1,6 +1,6 @@
 <?php 
 require_once '../settings.php';
-require_once '../processing/api_proc.php';
+require_once '../api/api_proc.php';
 
 // 200, 201 - успех
 // 400 - неудача

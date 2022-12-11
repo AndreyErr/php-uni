@@ -1,6 +1,6 @@
 <html lang="ru">
 <head>
-  <title>Пр 5</title>
+  <title><?php echo $name ?></title>
   <link rel="stylesheet" href="/src/css/style.css" type="text/css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
@@ -20,9 +20,15 @@ if(array_key_exists('theme', $_SESSION))
       <ul class="nav">
         <li><a href="/">Главная</a></li> 
         <!-- <li><a href="/catalog.php">Каталог</a></li>  -->
-        <li><a href="/adm.php">Адм</a></li> 
+        <li><a href="/admin">Адм</a></li> 
         <li><a href="/about.html">О нас</a></li> 
-        <li><a href="/pdf/files.php">Файлы</a></li>
+        <li><a href="/magaz">Каталог</a></li> 
+        <li><a href="/files">Файлы</a></li>
       </ul>
     </nav>
   </header>
+  <?php echo $content ?>
+<footer id="red">
+</footer>
+</body>
+</html>

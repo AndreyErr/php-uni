@@ -9,11 +9,10 @@ if($_FILES['file']){
             $fileName = $_FILES['file']['name'];
             $fileSize = $_FILES['file']['size'];
             $fileType = $_FILES['file']['type'];
-            $fileFormat = explode('/',$fileType)[1];
             $fileExt = explode('.',$fileName);
             $fileExt = strtolower(end($fileExt));
             $expensions = array("pdf");
-            if(array_search($fileFormat, $expensions) === false) {
+            if(array_search($fileExt, $expensions) === false) {
                 $error = 'Неправильный формат файла'; 
             }elseif ($fileSize == 0) {
                 $error = 'Файл пустой';
